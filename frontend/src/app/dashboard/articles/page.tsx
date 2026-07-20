@@ -72,7 +72,8 @@ const handleEdit = async (article: any) => {
       content: article.content || '', categoryId: article.categoryId?._id || article.categoryId || '',
       tags: article.tags?.join(', ') || '', featuredImageUrl: article.featuredImageUrl || '',
       videoUrl: article.videoUrl || '', videoType: article.videoType || '',
-      status: article.status || 'published',
+      thumbnailUrl: article.thumbnailUrl || '', seriesId: article.seriesId || '',
+      seriesOrder: article.seriesOrder || '', status: article.status || 'published',
     });
   }
   setShowForm(true);
