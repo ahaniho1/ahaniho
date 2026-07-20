@@ -6,6 +6,7 @@ import { ArticleLike, ArticleLikeDocument } from '../../schemas/article-like.sch
 import { Analytics, AnalyticsDocument } from '../../schemas/analytics.schema';
 import { AuditLog, AuditLogDocument } from '../../schemas/audit-log.schema';
 import { Notification, NotificationDocument } from '../../schemas/notification.schema';
+import { Controller, Get, Post, Put, Delete, Param, Query, Body, Res } from '@nestjs/common';
 
 @Controller('articles')
 export class ArticlesController {
@@ -113,4 +114,31 @@ async update(@Param('id') id: string, @Body() body: any) {
     }
     return { viewCount: article.viewCount };
   }
+  @Get('rss/feed')
+async getRssFeed(@Res() res: any) {
+  const articles = await this.articleModel.find({ status: 'published' }).sort({ publishedAt: -1 }).limit(20).populate('categoryId', 'name');
+  
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Aha Secret Max</title>
+  <link>https://ahaniho.vercel.app</link>
+  <description>Secrets That Elevate You</description>
+  <language>en-us</language>
+  <atom:link href="https://ahaniho.onrender.com/api/v1/articles/rss/feed" rel="self" type="application/rss+xml"/>
+  ${articles.map(a => `
+  <item>
+    <title>${a.title}</title>
+    <link>https://ahaniho.vercel.app/articles/${a.slug}</link>
+    <description>${a.excerpt || ''}</description>
+    <category>${(a.categoryId as any)?.name || 'General'}</category>
+    <pubDate>${new Date(a.publishedAt || a.createdAt).toUTCString()}</pubDate>
+    <guid>https://ahaniho.vercel.app/articles/${a.slug}</guid>
+  </item>`).join('')}
+</channel>
+</rss>`;
+
+  res.set('Content-Type', 'application/rss+xml');
+  res.send(rss);
+}
 }
