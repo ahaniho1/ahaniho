@@ -34,12 +34,9 @@ function ClientCTA() {
 function RotatingCard() {
   const cards = [
     { label: 'AI Trends', sub: 'Practical AI skills through hands-on projects', href: '/categories/ai-trends', color: '#2563EB', bg: '#EFF6FF' },
-{ label: 'Real and Fact', sub: 'Tangible psychology insights — real and fact-based', href: '/categories/real-and-fact', color: '#10B981', bg: '#ECFDF5' },
-{ label: 'Finewave', sub: 'Financial literacy and wealth building strategies', href: '/categories/finewave', color: '#F59E0B', bg: '#FFFBEB' },
-{ label: 'Bonus', sub: 'Extra content and exclusive insights', href: '/categories/bonus', color: '#EC4899', bg: '#FDF2F8' },, color: '#2563EB', bg: '#EFF6FF' },
-    { label: 'Psychology Facts', sub: 'Understand Human Behavior & Cognitive Science', href: '/categories/real-and-fact', color: '#10B981', bg: '#ECFDF5' },
-    { label: 'Financial Literacy', sub: 'Build Wealth & Master Personal Finance', href: '/categories/finewave', color: '#F59E0B', bg: '#FFFBEB' },
-    { label: 'Wealth Building', sub: 'Strategic Investing & Income Growth', href: '/search?q=wealth+building', color: '#8B5CF6', bg: '#F5F3FF' },
+    { label: 'Real and Fact', sub: 'Tangible psychology insights — real and fact-based', href: '/categories/real-and-fact', color: '#10B981', bg: '#ECFDF5' },
+    { label: 'Finewave', sub: 'Financial literacy and wealth building strategies', href: '/categories/finewave', color: '#F59E0B', bg: '#FFFBEB' },
+    { label: 'Bonus', sub: 'Extra content and exclusive insights', href: '/categories/bonus', color: '#EC4899', bg: '#FDF2F8' },
   ];
   const [current, setCurrent] = useState(0);
   const [exiting, setExiting] = useState(false);
