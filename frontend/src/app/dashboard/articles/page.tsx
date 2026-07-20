@@ -62,6 +62,7 @@ const handleEdit = async (article: any) => {
       tags: full.tags?.join(', ') || '', featuredImageUrl: full.featuredImageUrl || '',
       videoUrl: full.videoUrl || '', videoType: full.videoType || '',
       seriesId: full.seriesId || '', seriesOrder: full.seriesOrder || '',
+      thumbnailUrl: full.thumbnailUrl || '',
       status: full.status || 'published',
     });
   } catch {
