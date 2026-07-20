@@ -33,9 +33,12 @@ function ClientCTA() {
 
 function RotatingCard() {
   const cards = [
-    { label: 'AI Training', sub: 'Master Machine Learning & Deep Learning', href: '/categories/ai-training', color: '#2563EB', bg: '#EFF6FF' },
-    { label: 'Psychology Facts', sub: 'Understand Human Behavior & Cognitive Science', href: '/categories/psychology-facts', color: '#10B981', bg: '#ECFDF5' },
-    { label: 'Financial Literacy', sub: 'Build Wealth & Master Personal Finance', href: '/categories/financial-literacy', color: '#F59E0B', bg: '#FFFBEB' },
+    { label: 'AI Trends', sub: 'Practical AI skills through hands-on projects', href: '/categories/ai-trends', color: '#2563EB', bg: '#EFF6FF' },
+{ label: 'Real and Fact', sub: 'Tangible psychology insights — real and fact-based', href: '/categories/real-and-fact', color: '#10B981', bg: '#ECFDF5' },
+{ label: 'Finewave', sub: 'Financial literacy and wealth building strategies', href: '/categories/finewave', color: '#F59E0B', bg: '#FFFBEB' },
+{ label: 'Bonus', sub: 'Extra content and exclusive insights', href: '/categories/bonus', color: '#EC4899', bg: '#FDF2F8' },, color: '#2563EB', bg: '#EFF6FF' },
+    { label: 'Psychology Facts', sub: 'Understand Human Behavior & Cognitive Science', href: '/categories/real-and-fact', color: '#10B981', bg: '#ECFDF5' },
+    { label: 'Financial Literacy', sub: 'Build Wealth & Master Personal Finance', href: '/categories/finewave', color: '#F59E0B', bg: '#FFFBEB' },
     { label: 'Wealth Building', sub: 'Strategic Investing & Income Growth', href: '/search?q=wealth+building', color: '#8B5CF6', bg: '#F5F3FF' },
   ];
   const [current, setCurrent] = useState(0);
@@ -121,8 +124,8 @@ export default function HomePage() {
   };
 
   const getBadge = (slug: string) => {
-    const m: Record<string, string> = { 'ai-training': 'badge-blue', 'psychology-facts': 'badge-green', 'financial-literacy': 'badge-amber' };
-    return m[slug] || 'badge-blue';
+    const m: Record<string, string> = { 'ai-trends': 'badge-ai-trends', 'real-and-fact': 'badge-real-and-fact', 'finewave': 'badge-finewave', 'bonus': 'badge-bonus' };
+    return m[slug] || 'badge-ai-trends';
   };
   const getReadTime = (c: string) => c ? Math.max(1, Math.ceil(c.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) + ' min read' : '1 min read';
 
@@ -139,10 +142,10 @@ export default function HomePage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <div style={{ flex: '1 1 400px', maxWidth: '550px' }}>
                 <div className="animate-fade-up"><h1 className="hero-title"><span>Secrets That Elevate You</span></h1></div>
-                <div className="animate-fade-up" style={{ animationDelay: '0.15s' }}><p className="hero-sub">Master Artificial Intelligence. Understand the human mind. Build lasting wealth. Expert-crafted content designed to help you think smarter, make better decisions, and grow continuously.</p></div>
+                <div className="animate-fade-up" style={{ animationDelay: '0.15s' }}><p className="hero-sub">Discover secrets about AI Trends, Real Psychology Facts, Financial Freedom with Finewave, and Exclusive Bonus content. Expert-crafted knowledge designed to elevate your life.</p></div>
                 <div className="animate-fade-up" style={{ animationDelay: '0.3s', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   <Link href="/articles" className="btn btn-primary btn-lg">Explore Articles</Link>
-                  <Link href="/categories/ai-training" className="btn btn-outline btn-lg">Browse Categories</Link>
+                  <Link href="/categories/ai-trends" className="btn btn-outline btn-lg">Browse Categories</Link>
                 </div>
               </div>
               <RotatingCard />
@@ -266,11 +269,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
             {categories.map((cat: any) => (
               <Link key={cat._id} href={`/categories/${cat.slug}`} className="card text-center" style={{ padding: '36px 24px' }}>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${cat.slug === 'ai-training' ? 'bg-blue-50 text-blue-600' : cat.slug === 'psychology-facts' ? 'bg-green-50 text-green-600' : 'bg-amber-50 text-amber-600'}`}>
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${cat.slug === 'ai-trends' ? 'bg-blue-50 text-blue-600' : cat.slug === 'real-and-fact' ? 'bg-green-50 text-green-600' : 'bg-amber-50 text-amber-600'}`}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    {cat.slug === 'ai-training' && <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707"/>}
-                    {cat.slug === 'psychology-facts' && <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13"/>}
-                    {cat.slug === 'financial-literacy' && <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2"/>}
+                    {cat.slug === 'ai-trends' && <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707"/>}
+                    {cat.slug === 'real-and-fact' && <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13"/>}
+                    {cat.slug === 'finewave' && <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2"/>}
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold mb-2">{cat.name}</h3>

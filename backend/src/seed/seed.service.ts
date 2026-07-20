@@ -80,9 +80,9 @@ export class SeedService {
     const count = await this.categoryModel.countDocuments();
     if (count > 0) { this.logger.log('Categories already exist, skipping...'); return; }
     await this.categoryModel.insertMany([
-      { name: 'AI Training', slug: 'ai-training', description: 'Artificial intelligence and machine learning', parentId: null, isActive: true, sortOrder: 1 },
-      { name: 'Psychology Facts', slug: 'psychology-facts', description: 'Human behavior and mental wellness', parentId: null, isActive: true, sortOrder: 2 },
-      { name: 'Financial Literacy', slug: 'financial-literacy', description: 'Personal finance and investing', parentId: null, isActive: true, sortOrder: 3 },
+      { name: 'AI Training', slug: 'ai-trends', description: 'Artificial intelligence and machine learning', parentId: null, isActive: true, sortOrder: 1 },
+      { name: 'Psychology Facts', slug: 'real-and-fact', description: 'Human behavior and mental wellness', parentId: null, isActive: true, sortOrder: 2 },
+      { name: 'Financial Literacy', slug: 'finewave', description: 'Personal finance and investing', parentId: null, isActive: true, sortOrder: 3 },
     ]);
     this.logger.log('Categories created');
   }

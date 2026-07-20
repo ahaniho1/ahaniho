@@ -432,3 +432,31 @@ body {
   flex-direction: column;
   height: 100%;
 }
+/* ===== NEW CATEGORY BADGES ===== */
+.badge-ai-trends { background: #EFF6FF; color: #2563EB; }
+.badge-ai-trends .badge-dot { background: #2563EB; }
+.badge-real-and-fact { background: #F0FDF4; color: #10B981; }
+.badge-real-and-fact .badge-dot { background: #10B981; }
+.badge-finewave { background: #FFFBEB; color: #F59E0B; }
+.badge-finewave .badge-dot { background: #F59E0B; }
+.badge-bonus { background: #FDF2F8; color: #EC4899; }
+.badge-bonus .badge-dot { background: #EC4899; }
+
+/* ===== MOBILE BOTTOM BAR ===== */
+.mobile-bottom-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #fff; border-top: 1px solid #E2E8F0; z-index: 50;
+  padding: 6px 0 env(safe-area-inset-bottom, 0);
+}
+@media (max-width: 1024px) {
+  .mobile-bottom-bar { display: flex; justify-content: space-around; align-items: center; }
+  body { padding-bottom: 60px; }
+}
+.bottom-bar-item {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 12px; color: #64748B; text-decoration: none;
+  font-size: 10px; font-weight: 600; transition: color 0.15s;
+}
+.bottom-bar-item:hover, .bottom-bar-item.active { color: #2563EB; }
+.bottom-bar-item svg { width: 20px; height: 20px; }

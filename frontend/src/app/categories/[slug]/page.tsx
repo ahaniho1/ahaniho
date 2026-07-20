@@ -24,7 +24,7 @@ export default function CategoryPage() {
   };
 
   const getBadge = (s: string) => {
-    const m: Record<string, string> = { 'ai-training': 'badge-blue', 'psychology-facts': 'badge-green', 'financial-literacy': 'badge-amber' };
+    const m: Record<string, string> = { 'ai-trends': 'badge-blue', 'real-and-fact': 'badge-green', 'finewave': 'badge-amber' };
     return m[s] || 'badge-blue';
   };
   const getReadTime = (c: string) => c ? Math.max(1, Math.ceil(c.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) + ' min read' : '1 min read';

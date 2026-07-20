@@ -131,8 +131,8 @@ const toggleBookmark = () => {
   };
 
   const getReadTime = (c: string) => c ? Math.max(1, Math.ceil(c.replace(/<[^>]*>/g, '').split(/\s+/).length / 200)) + ' min read' : '1 min read';
-  const getBadge = (s: string) => s === 'ai-training' ? 'badge-blue' : s === 'psychology-facts' ? 'badge-green' : 'badge-amber';
-  const getBadgeClass = (s: string) => s === 'ai-training' ? 'badge-blue' : s === 'psychology-facts' ? 'badge-green' : 'badge-amber';
+  const getBadge = (s: string) => s === 'ai-trends' ? 'badge-blue' : s === 'real-and-fact' ? 'badge-green' : 'badge-amber';
+  const getBadgeClass = (s: string) => s === 'ai-trends' ? 'badge-blue' : s === 'real-and-fact' ? 'badge-green' : 'badge-amber';
   const shouldTruncate = article?.content && article.content.replace(/<[^>]*>/g, '').length > 800;
   const recommended = allArticles.slice(0, 5);
   const related = allArticles.slice(5, 9);
