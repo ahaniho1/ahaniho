@@ -35,13 +35,11 @@ export default function BookmarksPage() {
                   {b.featuredImageUrl ? (
                     <img src={b.featuredImageUrl} alt="" style={{ width: '40px', height: '40px', borderRadius: '6px', objectFit: 'cover' }} />
                   ) : (
-                    <div style={{ width: '40px', height: '40px', borderRadius: '6px', background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94A3B8' }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                    </div>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '6px', background: '#F1F5F9' }} />
                   )}
                   <div>
                     <p className="font-semibold text-sm text-gray-900">{b.title}</p>
-                    <span className="text-xs text-gray-400 mt-1">{b.savedAt ? new Date(b.savedAt).toLocaleDateString() : ''}</span>
+                    <span className="text-xs text-gray-400">{b.savedAt ? new Date(b.savedAt).toLocaleDateString() : ''}</span>
                   </div>
                 </div>
               </Link>
