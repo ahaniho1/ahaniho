@@ -140,7 +140,7 @@ async getRssFeed(@Res() res: any) {
     <link>https://ahaniho.vercel.app/articles/${a.slug}</link>
     <description>${a.excerpt || ''}</description>
     <category>${(a.categoryId as any)?.name || 'General'}</category>
-    <pubDate>${new Date(a.publishedAt || a.createdAt).toUTCString()}</pubDate>
+    <pubDate>${new Date(a.publishedAt || (a as any).createdAt).toUTCString()}</pubDate>
     <guid>https://ahaniho.vercel.app/articles/${a.slug}</guid>
   </item>`).join('')}
 </channel>
