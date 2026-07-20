@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           <button onClick={() => setCollapsed(!collapsed)} className="text-gray-400 hover:text-gray-600 p-1 shrink-0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
-          {!collapsed && <Link href="/dashboard" className="flex items-center no-underline"><img src="/logo.png" alt="AHA NIHO" style={{ height: '48px', width: 'auto' }} /></Link>}
+          {!collapsed && <Link href="/dashboard" className="flex items-center no-underline"><img src="/logo.png" alt="Aha Secret Max" style={{ height: '48px', width: 'auto' }} /></Link>}
         </div>
         <nav className="flex-1 py-2 px-2 space-y-0.5 overflow-y-auto">
           {links.map((link) => (

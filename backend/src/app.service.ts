@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getStatus() {
     return {
-      name: 'AHA NIHO API',
+      name: 'Aha Secret Max API',
       version: '1.0.0',
       status: 'running',
       timestamp: new Date().toISOString(),

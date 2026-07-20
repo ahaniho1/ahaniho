@@ -108,7 +108,7 @@ export class SeedService {
     const count = await this.settingModel.countDocuments();
     if (count > 0) { this.logger.log('Settings already exist, skipping...'); return; }
     await this.settingModel.insertMany([
-      { key: 'site_name', value: 'AHA NIHO' },
+      { key: 'site_name', value: 'Aha Secret Max' },
       { key: 'site_description', value: 'Professional Content Publishing Platform' },
       { key: 'default_language', value: 'en' },
       { key: 'enable_comments', value: true },

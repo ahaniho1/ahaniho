@@ -96,7 +96,7 @@ export default function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="AHA NIHO Location"
+                  title="Aha Secret Max Location"
                 />
               </div>
             </div>

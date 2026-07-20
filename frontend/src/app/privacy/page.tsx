@@ -12,7 +12,7 @@ export default function PrivacyPage() {
           <div className="card" style={{ padding: '36px', fontSize: '15px', lineHeight: '1.8', color: '#334155' }}>
             <p className="mb-6"><strong className="text-gray-900">Last updated:</strong> July 2026</p>
             <h2 className="text-xl font-bold text-gray-900 mb-3">1. Information We Collect</h2>
-            <p className="mb-6">When you use AHA NIHO, we may collect your name and email address when you create an account or leave a comment. We also collect anonymous usage data such as pages visited and articles read to improve our platform.</p>
+            <p className="mb-6">When you use Aha Secret Max, we may collect your name and email address when you create an account or leave a comment. We also collect anonymous usage data such as pages visited and articles read to improve our platform.</p>
             <h2 className="text-xl font-bold text-gray-900 mb-3">2. How We Use Your Information</h2>
             <p className="mb-6">Your information helps us personalize your experience, improve our content, and communicate important updates. We never sell your personal data to third parties.</p>
             <h2 className="text-xl font-bold text-gray-900 mb-3">3. Cookies</h2>

@@ -156,7 +156,7 @@ const toggleBookmark = () => {
             <h1 className="text-3xl md:text-4xl font-extrabold mt-3 mb-4 leading-tight" style={{color:'#0F172A'}}>{article.title}</h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-6 pb-4 border-b">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center font-bold text-xs text-blue-600">{article.authorId?.firstName?.[0] || 'A'}</div>
-              <span className="font-semibold text-gray-900">{article.authorId?.firstName || 'AHA NIHO'} {article.authorId?.lastName || ''}</span>
+              <span className="font-semibold text-gray-900">{article.authorId?.firstName || 'Aha Secret Max'} {article.authorId?.lastName || ''}</span>
               <span>&middot;</span><span>{article.publishedAt ? new Date(article.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Recently'}</span>
               <span>&middot;</span><span>{getReadTime(article.content)}</span><span>&middot;</span><span>{article.viewCount || 0} views</span>
               <div className="flex items-center gap-4 ml-auto">

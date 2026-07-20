@@ -20,7 +20,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 5000;
   await app.listen(port);
-  console.log(`🚀 AHA NIHO Backend running on: http://localhost:${port}`);
+  console.log(`🚀 Aha Secret Max Backend running on: http://localhost:${port}`);
   console.log(`📚 API Docs: http://localhost:${port}/api/v1`);
 }
 bootstrap();

@@ -285,7 +285,7 @@ export default function HomePage() {
       <section className="cta">
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <h2 className="text-3xl font-extrabold mb-4">Ready to Elevate Your Knowledge?</h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-xl mx-auto">Join thousands of readers discovering new knowledge every day on AHA NIHO.</p>
+          <p className="text-blue-100 text-lg mb-8 max-w-xl mx-auto">Join thousands of readers discovering new knowledge every day on Aha Secret Max.</p>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <ClientCTA />
             <Link href="/articles" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(255,255,255,0.4)', color: '#fff' }}>Browse Articles</Link>

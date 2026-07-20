@@ -70,7 +70,7 @@ export default function LoginPage() {
         <div style={{ position: 'absolute', bottom: '-100px', left: '-100px', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(139,92,246,0.1)', filter: 'blur(60px)' }}></div>
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', color: '#fff', maxWidth: '400px' }}>
           <Link href="/" style={{ display: 'inline-block', marginBottom: '32px' }}>
-            <img src="/logo.png" alt="AHA NIHO" style={{ height: '70px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
+            <img src="/logo.png" alt="Aha Secret Max" style={{ height: '70px', width: 'auto', filter: 'brightness(0) invert(1)' }} />
           </Link>
           <h1 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '12px', letterSpacing: '-0.02em' }}>Secrets That Elevate You</h1>
           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>
@@ -96,7 +96,7 @@ export default function LoginPage() {
             </button>
           </div>
 
-          <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#0F172A', marginBottom: '4px' }}>{isLogin ? 'Welcome back' : 'Join AHA NIHO'}</h2>
+          <h2 style={{ fontSize: '24px', fontWeight: 800, color: '#0F172A', marginBottom: '4px' }}>{isLogin ? 'Welcome back' : 'Join Aha Secret Max'}</h2>
           <p style={{ fontSize: '14px', color: '#64748B', marginBottom: '28px' }}>{isLogin ? 'Sign in to access your dashboard' : 'Create a free reader account'}</p>
 
           {error && (

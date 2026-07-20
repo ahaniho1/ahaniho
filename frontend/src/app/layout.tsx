@@ -150,7 +150,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="container header-inner">
               <div className="flex items-center gap-6">
                 <Link href="/" className="flex items-center no-underline">
-                  <img src="/logo.png" alt="AHA NIHO" style={{ height: '88px', width: 'auto' }} />
+                  <img src="/logo.png" alt="Aha Secret Max" style={{ height: '88px', width: 'auto' }} />
                 </Link>
                 <button onClick={() => setDrawerOpen(true)} className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-all text-gray-600 font-medium text-sm border border-gray-200">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -221,7 +221,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <aside className="drawer hidden lg:flex flex-col">
                 <div className="drawer-header">
                   <div className="flex items-center justify-between">
-                    <Link href="/" className="flex items-center no-underline" onClick={closeAll}><img src="/logo.png" alt="AHA NIHO" style={{ height: '88px', width: 'auto' }} /></Link>
+                    <Link href="/" className="flex items-center no-underline" onClick={closeAll}><img src="/logo.png" alt="Aha Secret Max" style={{ height: '88px', width: 'auto' }} /></Link>
                     <button onClick={() => setDrawerOpen(false)} className="p-1.5 rounded-lg hover:bg-gray-100"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M6 18L18 6M6 6l12 12"/></svg></button>
                   </div>
                   <p className="text-xs text-gray-500 mt-2">Secrets That Elevate You</p>
@@ -301,7 +301,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="container">
               <div className="footer-grid">
                 <div>
-                  <Link href="/" className="flex items-center no-underline mb-4"><img src="/logo.png" alt="AHA NIHO" style={{ height: '100px', width: 'auto', filter: 'brightness(0) invert(1)' }} /></Link>
+                  <Link href="/" className="flex items-center no-underline mb-4"><img src="/logo.png" alt="Aha Secret Max" style={{ height: '100px', width: 'auto', filter: 'brightness(0) invert(1)' }} /></Link>
                   <p className="text-gray-400 text-sm max-w-xs">Professional content publishing platform for AI, Psychology, and Finance.</p>
                 </div>
                 <div><h4 className="footer-title">Categories</h4><a href="/categories/ai-training" className="footer-link">AI Training</a><a href="/categories/psychology-facts" className="footer-link">Psychology Facts</a><a href="/categories/financial-literacy" className="footer-link">Financial Literacy</a></div>
@@ -316,7 +316,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
               </div>
               <div className="footer-marquee"><div className="footer-marquee-inner">{['Artificial Intelligence','Psychology Facts','Financial Literacy','Machine Learning','Cognitive Science','Wealth Building','Prompt Engineering','Emotional Intelligence','Investing','Deep Learning','Behavioral Psychology','Personal Finance','Neural Networks','Mental Wellness','Budgeting','AI Ethics','Human Behavior','Stock Market','Data Science','Mindfulness','Crypto','Robotics','Happiness','Real Estate','Automation'].map((w,i)=>(<span key={i}>{w}</span>))}</div></div>
-              <div className="footer-bottom"><div className="footer-bottom-inner">&copy; {new Date().getFullYear()} AHA NIHO &mdash; Powered by <a href="https://niroflixx.online" target="_blank" rel="noopener">Niroflixx</a></div></div>
+              <div className="footer-bottom"><div className="footer-bottom-inner">&copy; {new Date().getFullYear()} Aha Secret Max &mdash; Powered by <a href="https://niroflixx.online" target="_blank" rel="noopener">Niroflixx</a></div></div>
             </div>
           </footer>
         </div>

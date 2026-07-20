@@ -3,7 +3,7 @@ export default function AboutPage() {
     <div style={{ background: '#F8FAFC', minHeight: '100vh' }}>
       <section style={{ background: 'linear-gradient(135deg, #EFF6FF, #F8FAFC)', padding: '64px 0 48px', textAlign: 'center' }}>
         <div className="container">
-          <h1 className="text-4xl font-extrabold text-gray-900 mb-3">About AHA NIHO</h1>
+          <h1 className="text-4xl font-extrabold text-gray-900 mb-3">About Aha Secret Max</h1>
           <p className="text-gray-500 text-lg">Our mission, vision, and the team behind the platform</p>
         </div>
       </section>
@@ -13,7 +13,7 @@ export default function AboutPage() {
           <div className="card" style={{ marginBottom: '28px', padding: '36px' }}>
             <h2 className="text-2xl font-bold mb-4 text-gray-900">Our Mission</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              AHA NIHO is a professional content publishing platform dedicated to elevating knowledge across three transformative disciplines: <strong className="text-gray-900">Artificial Intelligence</strong>, <strong className="text-gray-900">Psychology</strong>, and <strong className="text-gray-900">Financial Literacy</strong>.
+              Aha Secret Max is a professional content publishing platform dedicated to elevating knowledge across three transformative disciplines: <strong className="text-gray-900">Artificial Intelligence</strong>, <strong className="text-gray-900">Psychology</strong>, and <strong className="text-gray-900">Financial Literacy</strong>.
             </p>
             <p className="text-gray-600 leading-relaxed">
               We believe that access to quality information should be free and available to everyone. Our platform brings together expert writers, researchers, and thought leaders to share insights that can change lives.
@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="card" style={{ padding: '36px' }}>
             <h2 className="text-2xl font-bold mb-4 text-gray-900">Join Us</h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Whether you are a reader seeking knowledge or a writer wanting to share your expertise, AHA NIHO welcomes you.
+              Whether you are a reader seeking knowledge or a writer wanting to share your expertise, Aha Secret Max welcomes you.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Our platform is built by <strong className="text-gray-900">Niroflixx</strong>, committed to creating professional digital experiences.
