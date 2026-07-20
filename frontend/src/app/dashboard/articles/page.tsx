@@ -114,7 +114,7 @@ const handleEdit = async (article: any) => {
       const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify(payload) });
       if (!res.ok) throw new Error('Failed');
       setShowForm(false); setEditingId(null);
-      setForm({ title: '', slug: '', excerpt: '', content: '', categoryId: '', tags: '', featuredImageUrl: '', videoUrl: '', videoType: '', status: 'published' });
+      setForm({ title: '', slug: '', excerpt: '', content: '', categoryId: '', tags: '', featuredImageUrl: '', videoUrl: '', videoType: '', thumbnailUrl: '', seriesId: '', seriesOrder: '', status: 'published' });
       fetchArticles();
     } catch { setError('Error saving article'); }
     setSubmitting(false);
@@ -140,7 +140,7 @@ const handleEdit = async (article: any) => {
     <div className="p-6 lg:p-8">
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '12px' }}>
         <div><h1 className="text-2xl font-bold text-gray-900">Articles</h1><p className="text-gray-500 text-sm">Manage all platform articles</p></div>
-        <button onClick={() => { setEditingId(null); setForm({ title: '', slug: '', excerpt: '', content: '', categoryId: '', tags: '', featuredImageUrl: '', videoUrl: '', videoType: '', status: 'published' }); setShowForm(true); }} className="btn btn-primary">+ New Article</button>
+        <button onClick={() => { setEditingId(null); setForm({ title: '', slug: '', excerpt: '', content: '', categoryId: '', tags: '', featuredImageUrl: '', videoUrl: '', videoType: '', thumbnailUrl: '', seriesId: '', seriesOrder: '', status: 'published' }); setShowForm(true); }} className="btn btn-primary">+ New Article</button>
       </div>
 
       <div className="card" style={{ padding: 0, overflow: 'hidden', marginBottom: '32px' }}>
