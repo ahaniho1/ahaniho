@@ -10,12 +10,12 @@ import { Notification, NotificationDocument } from '../../schemas/notification.s
 @Controller('articles')
 export class ArticlesController {
   constructor(
-  @InjectModel(Article.name) private articleModel: Model<ArticleDocument>,
-  @InjectModel(ArticleLike.name) private articleLikeModel: Model<ArticleLikeDocument>,
-  @InjectModel(Analytics.name) private analyticsModel: Model<AnalyticsDocument>,
-  @InjectModel(AuditLog.name) private auditModel: Model<AuditLogDocument>,
-  @InjectModel(Notification.name) private notifModel: Model<NotificationDocument>,
-) {}
+    @InjectModel(Article.name) private articleModel: Model<ArticleDocument>,
+    @InjectModel(ArticleLike.name) private articleLikeModel: Model<ArticleLikeDocument>,
+    @InjectModel(Analytics.name) private analyticsModel: Model<AnalyticsDocument>,
+    @InjectModel(AuditLog.name) private auditModel: Model<AuditLogDocument>,
+    @InjectModel(Notification.name) private notifModel: Model<NotificationDocument>,
+  ) {}
 
   @Get()
   async findAll(@Query('category') category?: string, @Query('limit') limit = 50) {
@@ -26,65 +26,49 @@ export class ArticlesController {
     return { articles, total };
   }
 
-@Get('rss/feed')
-async getRssFeed(@Res() res: any) {
-  const articles = await this.articleModel.find({ status: 'published' }).sort({ publishedAt: -1 }).limit(20).populate('categoryId', 'name');
-  const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Aha Secret Max</title><link>https://ahaniho.vercel.app</link><description>Secrets That Elevate You</description>${articles.map(a => `<item><title>${a.title}</title><link>https://ahaniho.vercel.app/articles/${a.slug}</link><description>${a.excerpt||''}</description><pubDate>${new Date(a.publishedAt||a.createdAt).toUTCString()}</pubDate></item>`).join('')}</channel></rss>`;
-  res.set('Content-Type', 'application/rss+xml');
-  res.send(rss);
-}
-
-@Get(':slug')
-async findBySlug(@Param('slug') slug: string) {
-  return this.articleModel.findOne({ slug }).populate('categoryId', 'name slug').populate('authorId', 'firstName lastName avatarUrl');
-}
-
-@Post()
-async create(@Body() body: any) {
-  const data: any = { ...body, authorId: body.authorId || undefined };
-  if (body.status === 'published' && !body.publishedAt) {
-    data.publishedAt = new Date();
+  @Get('rss/feed')
+  async getRssFeed(@Res() res: any) {
+    const articles = await this.articleModel.find({ status: 'published' }).sort({ publishedAt: -1 }).limit(20).populate('categoryId', 'name');
+    const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Aha Secret Max</title><link>https://ahaniho.vercel.app</link><description>Secrets That Elevate You</description>${articles.map(a => `<item><title>${a.title}</title><link>https://ahaniho.vercel.app/articles/${a.slug}</link><description>${a.excerpt||''}</description><pubDate>${new Date(a.publishedAt || (a as any).createdAt).toUTCString()}</pubDate></item>`).join('')}</channel></rss>`;
+    res.set('Content-Type', 'application/rss+xml');
+    res.send(rss);
   }
-  const article = await this.articleModel.create(data);
-  await this.auditModel.create({ action: 'ARTICLE_CREATED', entityType: 'article', entityId: article._id.toString(), newValues: { title: article.title, status: article.status } });
-  return this.articleModel.findById(article._id).populate('categoryId').populate('authorId');
-}
+
+  @Get(':slug')
+  async findBySlug(@Param('slug') slug: string) {
+    return this.articleModel.findOne({ slug }).populate('categoryId', 'name slug').populate('authorId', 'firstName lastName avatarUrl');
+  }
+
+  @Post()
+  async create(@Body() body: any) {
+    const data: any = { ...body, authorId: body.authorId || undefined };
+    if (body.status === 'published' && !body.publishedAt) { data.publishedAt = new Date(); }
+    const article = await this.articleModel.create(data);
+    await this.auditModel.create({ action: 'ARTICLE_CREATED', entityType: 'article', entityId: article._id.toString(), newValues: { title: article.title, status: article.status } });
+    return this.articleModel.findById(article._id).populate('categoryId').populate('authorId');
+  }
 
   @Put(':id')
-async update(@Param('id') id: string, @Body() body: any) {
-  const old = await this.articleModel.findById(id);
-  const updateData: any = { ...body };
-  if (body.status === 'published' && old && !old.publishedAt) {
-    updateData.publishedAt = new Date();
-  }
-  await this.articleModel.findByIdAndUpdate(id, updateData);
-  
-  if (body.status && old && old.status !== body.status) {
-    const action = body.status === 'published' ? 'ARTICLE_APPROVED' : body.status === 'rejected' ? 'ARTICLE_REJECTED' : 'ARTICLE_UPDATED';
-    await this.auditModel.create({ action, entityType: 'article', entityId: id, oldValues: { status: old.status }, newValues: { status: body.status } });
-    
-    // Send notification to author
-    if (old.authorId && (body.status === 'published' || body.status === 'rejected')) {
-      await this.notifModel.create({
-        userId: old.authorId.toString(),
-        type: body.status === 'published' ? 'article_approved' : 'article_rejected',
-        title: body.status === 'published' ? 'Article Approved' : 'Article Rejected',
-        message: `Your article "${old.title}" has been ${body.status}.`,
-        isRead: false,
-      });
+  async update(@Param('id') id: string, @Body() body: any) {
+    const old = await this.articleModel.findById(id);
+    const updateData: any = { ...body };
+    if (body.status === 'published' && old && !old.publishedAt) { updateData.publishedAt = new Date(); }
+    await this.articleModel.findByIdAndUpdate(id, updateData);
+    if (body.status && old && old.status !== body.status) {
+      const action = body.status === 'published' ? 'ARTICLE_APPROVED' : body.status === 'rejected' ? 'ARTICLE_REJECTED' : 'ARTICLE_UPDATED';
+      await this.auditModel.create({ action, entityType: 'article', entityId: id, oldValues: { status: old.status }, newValues: { status: body.status } });
+      if (old.authorId && (body.status === 'published' || body.status === 'rejected')) {
+        await this.notifModel.create({ userId: old.authorId.toString(), type: body.status === 'published' ? 'article_approved' : 'article_rejected', title: body.status === 'published' ? 'Article Approved' : 'Article Rejected', message: `Your article "${old.title}" has been ${body.status}.`, isRead: false });
+      }
     }
+    return this.articleModel.findById(id).populate('categoryId').populate('authorId');
   }
-  
-  return this.articleModel.findById(id).populate('categoryId').populate('authorId');
-}
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
     const article = await this.articleModel.findById(id);
     await this.articleModel.findByIdAndDelete(id);
-    if (article) {
-      await this.auditModel.create({ action: 'ARTICLE_DELETED', entityType: 'article', entityId: id, oldValues: { title: article.title } });
-    }
+    if (article) { await this.auditModel.create({ action: 'ARTICLE_DELETED', entityType: 'article', entityId: id, oldValues: { title: article.title } }); }
     return { message: 'Article deleted successfully' };
   }
 
@@ -94,15 +78,9 @@ async update(@Param('id') id: string, @Body() body: any) {
     if (!article) return { error: 'Article not found' };
     const fingerprint = body.deviceFingerprint || body.userId || 'unknown';
     const existingLike = await this.articleLikeModel.findOne({ articleId: id, deviceFingerprint: fingerprint });
-    if (existingLike) {
-      await this.articleLikeModel.deleteOne({ _id: existingLike._id });
-      article.likeCount = Math.max(0, article.likeCount - 1);
-      await article.save();
-      return { likeCount: article.likeCount, liked: false };
-    }
+    if (existingLike) { await this.articleLikeModel.deleteOne({ _id: existingLike._id }); article.likeCount = Math.max(0, article.likeCount - 1); await article.save(); return { likeCount: article.likeCount, liked: false }; }
     await this.articleLikeModel.create({ articleId: id, userId: body.userId || undefined, deviceFingerprint: fingerprint });
-    article.likeCount += 1;
-    await article.save();
+    article.likeCount += 1; await article.save();
     return { likeCount: article.likeCount, liked: true };
   }
 
@@ -116,37 +94,9 @@ async update(@Param('id') id: string, @Body() body: any) {
     const key = `view_${id}_${sessionId}`;
     if (!(globalThis as any).viewTracker[key]) {
       (globalThis as any).viewTracker[key] = true;
-      article.viewCount += 1;
-      await article.save();
+      article.viewCount += 1; await article.save();
       await this.analyticsModel.create({ eventType: 'article_view', articleId: id, sessionId });
     }
     return { viewCount: article.viewCount };
   }
-  @Get('rss/feed')
-async getRssFeed(@Res() res: any) {
-  const articles = await this.articleModel.find({ status: 'published' }).sort({ publishedAt: -1 }).limit(20).populate('categoryId', 'name');
-  
-  const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-  <title>Aha Secret Max</title>
-  <link>https://ahaniho.vercel.app</link>
-  <description>Secrets That Elevate You</description>
-  <language>en-us</language>
-  <atom:link href="https://ahaniho.onrender.com/api/v1/articles/rss/feed" rel="self" type="application/rss+xml"/>
-  ${articles.map(a => `
-  <item>
-    <title>${a.title}</title>
-    <link>https://ahaniho.vercel.app/articles/${a.slug}</link>
-    <description>${a.excerpt || ''}</description>
-    <category>${(a.categoryId as any)?.name || 'General'}</category>
-    <pubDate>${new Date(a.publishedAt || (a as any).createdAt).toUTCString()}</pubDate>
-    <guid>https://ahaniho.vercel.app/articles/${a.slug}</guid>
-  </item>`).join('')}
-</channel>
-</rss>`;
-
-  res.set('Content-Type', 'application/rss+xml');
-  res.send(rss);
-}
 }
