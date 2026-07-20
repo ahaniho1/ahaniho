@@ -16,8 +16,10 @@ export default function DashboardArticlesPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({
     title: '', slug: '', excerpt: '', content: '', categoryId: '', tags: '',
-    featuredImageUrl: '', videoUrl: '', videoType: '', status: 'published',
+    featuredImageUrl: '', videoUrl: '', videoType: '', thumbnailUrl: '', status: 'published',
+    seriesId: '', seriesOrder: '',
   });
+
   const [categories, setCategories] = useState<any[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -59,6 +61,7 @@ const handleEdit = async (article: any) => {
       content: full.content || '', categoryId: full.categoryId?._id || full.categoryId || '',
       tags: full.tags?.join(', ') || '', featuredImageUrl: full.featuredImageUrl || '',
       videoUrl: full.videoUrl || '', videoType: full.videoType || '',
+      seriesId: full.seriesId || '', seriesOrder: full.seriesOrder || '',
       status: full.status || 'published',
     });
   } catch {
@@ -101,6 +104,7 @@ const handleEdit = async (article: any) => {
       tags: form.tags.split(',').map((t: string) => t.trim()).filter(Boolean),
       featuredImageUrl: form.featuredImageUrl, videoUrl: form.videoUrl,
       videoType: form.videoType,status: form.status,
+      seriesId: form.seriesId, seriesOrder: form.seriesOrder ? Number(form.seriesOrder) : 0,
     };
     try {
       const url = editingId ? `${API_URL}/articles/${editingId}` : `${API_URL}/articles`;
@@ -192,6 +196,10 @@ const handleEdit = async (article: any) => {
                   {userRole === 'administrator' ? <option value="published">Publish Immediately</option> : <><option value="draft">Draft</option><option value="pending">Submit for Review</option></>}
                 </select>
               </div>
+              <div className="grid grid-cols-2 gap-4">
+              <div><label className="block text-sm font-semibold text-gray-700 mb-1.5">Series ID (optional)</label><input type="text" value={form.seriesId} onChange={e => setForm({...form, seriesId: e.target.value})} className="input" placeholder="e.g. ai-basics" /></div>
+              <div><label className="block text-sm font-semibold text-gray-700 mb-1.5">Series Order</label><input type="number" value={form.seriesOrder} onChange={e => setForm({...form, seriesOrder: e.target.value})} className="input" placeholder="1" /></div>
+            </div>
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-sm font-semibold text-gray-700 mb-1.5">Category</label><select value={form.categoryId} onChange={e => setForm({...form, categoryId: e.target.value})} className="select"><option value="">Select</option>{categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}</select></div>
                 <div><label className="block text-sm font-semibold text-gray-700 mb-1.5">Tags</label><input type="text" value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} className="input" placeholder="ai, ml" /></div>

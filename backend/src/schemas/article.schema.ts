@@ -59,6 +59,12 @@ export class Article {
 
   @Prop({ type: [String], default: [] })
   tags: string[];
+  
+@Prop({ default: '' })
+seriesId: string;
+
+@Prop({ default: 0 })
+seriesOrder: number;
 
   @Prop({ default: '' })
   videoUrl: string;
