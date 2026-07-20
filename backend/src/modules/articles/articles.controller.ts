@@ -27,11 +27,20 @@ export class ArticlesController {
     return { articles, total };
   }
 
-  @Get(':slug')
-  async findBySlug(@Param('slug') slug: string) {
-    return this.articleModel.findOne({ slug }).populate('categoryId', 'name slug').populate('authorId', 'firstName lastName avatarUrl');
-  }
-  @Post()
+@Get('rss/feed')
+async getRssFeed(@Res() res: any) {
+  const articles = await this.articleModel.find({ status: 'published' }).sort({ publishedAt: -1 }).limit(20).populate('categoryId', 'name');
+  const rss = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Aha Secret Max</title><link>https://ahaniho.vercel.app</link><description>Secrets That Elevate You</description>${articles.map(a => `<item><title>${a.title}</title><link>https://ahaniho.vercel.app/articles/${a.slug}</link><description>${a.excerpt||''}</description><pubDate>${new Date(a.publishedAt||a.createdAt).toUTCString()}</pubDate></item>`).join('')}</channel></rss>`;
+  res.set('Content-Type', 'application/rss+xml');
+  res.send(rss);
+}
+
+@Get(':slug')
+async findBySlug(@Param('slug') slug: string) {
+  return this.articleModel.findOne({ slug }).populate('categoryId', 'name slug').populate('authorId', 'firstName lastName avatarUrl');
+}
+
+@Post()
 async create(@Body() body: any) {
   const data: any = { ...body, authorId: body.authorId || undefined };
   if (body.status === 'published' && !body.publishedAt) {
