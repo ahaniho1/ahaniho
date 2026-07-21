@@ -58,7 +58,7 @@ function MobileBottomBar() {
       }} className="bottom-bar-item" style={{background:'none',border:'none',cursor:'pointer',fontFamily:'inherit',fontSize:'10px'}}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Categories</button>
       <button onClick={()=>{
-        const links=[{label:'Home',href:'/'},{label:'Articles',href:'/articles'},{label:'About',href:'/about'},{label:'Contact',href:'/contact'},{label:'Privacy',href:'/privacy'},{label:'Terms',href:'/terms'}];
+        const links=[{label:'Home',href:'/'},{label:'Articles',href:'/articles'},{label:'About',href:'/about'},{label:'Contact',href:'/contact'},{label:'Privacy',href:'/privacy'},{label:'Terms',href:'/terms'},{label:'My Bookmarks',href:'/bookmarks'}];
         const o=document.createElement('div');o.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.3);z-index:60;';o.id='bo';
         const d=document.createElement('div');d.style.cssText='position:fixed;bottom:60px;left:16px;right:16px;max-height:70vh;overflow-y:auto;background:#fff;border-radius:20px;padding:20px;z-index:61;animation:slideUp 0.3s ease;box-shadow:0 -4px 30px rgba(0,0,0,0.1);';
         d.innerHTML='<p style="font-size:14px;font-weight:700;color:#0F172A;margin-bottom:16px;text-align:center">Browse</p>'+links.map(l=>`<a href="${l.href}" style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;text-decoration:none;color:#334155;font-size:14px;font-weight:600;border-bottom:1px solid #F1F5F9">${l.label}</a>`).join('');
