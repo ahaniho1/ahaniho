@@ -6,8 +6,13 @@ export default function BookmarksPage() {
   const [bookmarks, setBookmarks] = useState<any[]>([]);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-    setBookmarks(saved);
+    const load = () => {
+      const saved = JSON.parse(localStorage.getItem('bookmarks') || '[]');
+      setBookmarks(saved);
+    };
+    load();
+    window.addEventListener('focus', load);
+    return () => window.removeEventListener('focus', load);
   }, []);
 
   const removeBookmark = (slug: string) => {

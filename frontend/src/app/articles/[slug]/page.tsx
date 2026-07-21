@@ -66,6 +66,7 @@ useEffect(() => {
 }, [slug]);
 
 const toggleBookmark = () => {
+  if (!article) return;
   const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
   if (bookmarked) {
     const updated = bookmarks.filter((b: any) => b.slug !== slug);
