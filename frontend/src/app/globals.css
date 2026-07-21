@@ -457,6 +457,7 @@ body {
   display: flex; flex-direction: column; align-items: center; gap: 2px;
   padding: 6px 12px; color: #64748B; text-decoration: none;
   font-size: 10px; font-weight: 600; transition: color 0.15s;
+  cursor: pointer; background: none; border: none; font-family: inherit;
 }
 .bottom-bar-item:hover, .bottom-bar-item.active { color: #2563EB; }
 .bottom-bar-item svg { width: 20px; height: 20px; }
