@@ -15,6 +15,7 @@ const mainLinks = [
 const moreLinks = [
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
+  { href: '/bookmarks', label: 'My Bookmarks' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
 ];
